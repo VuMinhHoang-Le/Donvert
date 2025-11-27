@@ -1,0 +1,64 @@
+version: "3.8"
+
+services:
+  minio:
+    image: minio/minio
+    container_name: Donvert-MinIO
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server /data --console-address ":9001"
+    volumes:
+      - ./db/minio-data:/data
+
+  mongodb:
+    image: mongo:7.0.5
+    container_name: Donvert-MongoDB
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INIT_USERNAME: root
+      MONGO_INIT_PASSWORD: password
+      MONGO_INIT_DATABASE: donvert-mongodb-upload
+    volumes:
+      - ./db/mongo-data:/data/db
+
+#  mongo-express:
+#    image: mongo-express
+#    container_name: mongo-express
+#    depends_on:
+#      - mongodb
+#    ports:
+#      - "8081:8081"
+#    environment:
+#      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+#      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+#      ME_CONFIG_MONGODB_SERVER: mongodb
+#      ME_CONFIG_MONGODB_URL: "mongodb://mongodb:27017"
+
+  postgres:
+    image: postgres:latest
+    container_name: Donvert-PostgresSQL
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/postgres-db:/var/lib/postgresql
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres

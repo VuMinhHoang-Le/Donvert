@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.42/8365263844ebb62398e0dc33057ba10ba472d3b8/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="user-microservice.main" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="convert-microservice" options="-parameters" />
+      <module name="convert-microservice.main" options="-parameters" />
+      <module name="convert-microservice.test" options="-parameters" />
+      <module name="download-microservice" options="-parameters" />
+      <module name="download-microservice.main" options="-parameters" />
+      <module name="download-microservice.test" options="-parameters" />
+      <module name="summarizer-microservice" options="-parameters" />
+      <module name="summarizer-microservice.main" options="-parameters" />
+      <module name="summarizer-microservice.test" options="-parameters" />
+      <module name="upload-microservice" options="-parameters" />
+      <module name="upload-microservice.main" options="-parameters" />
+      <module name="upload-microservice.test" options="-parameters" />
+      <module name="user-microservice" options="-parameters" />
+      <module name="user-microservice.main" options="-parameters" />
+      <module name="user-microservice.test" options="-parameters" />
+    </option>
+  </component>
+</project>
